@@ -1,0 +1,166 @@
+/* Reset default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure body takes at least the full viewport height */
+}
+
+.header {
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  flex: 1; /* Allow container to grow and take remaining space */
+  padding: 20px;
+  overflow-x: auto; /* Enable horizontal scrolling for the table */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+th {
+  background-color: #5a3e1b;
+  color: white;
+  position: sticky; /* Make headers sticky */
+  top: 0; /* Stick to the top */
+  z-index: 1; /* Ensure headers are above table content */
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pagination button {
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.pagination button:hover:not(.active) {
+  background-color: #ddd;
+}
+
+.pagination button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+.footer {
+  background-color: #5b3c07;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  width: 100%; /* Ensure footer spans the full width */
+  margin-top: auto; /* Push footer to the bottom */
+}
+
+.footer .links {
+  margin-bottom: 15px;
+}
+
+.footer .links a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.footer .links a:hover {
+  text-decoration: underline;
+  color: darkkhaki;
+}
+
+.footer p {
+  font-size: 1rem;
+  margin: 5px 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  th,
+  td {
+    padding: 8px; /* Reduce padding for smaller screens */
+    font-size: 14px; /* Reduce font size for smaller screens */
+  }
+
+  .pagination button {
+    padding: 8px 12px; /* Smaller buttons for mobile */
+    font-size: 14px;
+  }
+
+  .footer .links a {
+    font-size: 0.9rem; /* Smaller font size for footer links */
+    margin: 0 5px;
+  }
+
+  .footer p {
+    font-size: 0.9rem; /* Smaller font size for footer text */
+  }
+}
+
+@media (max-width: 480px) {
+  th,
+  td {
+    padding: 6px; /* Further reduce padding for very small screens */
+    font-size: 12px; /* Further reduce font size */
+  }
+
+  .pagination button {
+    padding: 6px 10px; /* Even smaller buttons */
+    font-size: 12px;
+  }
+
+  .footer .links a {
+    font-size: 0.8rem; /* Smaller font size for footer links */
+    margin: 0 3px;
+  }
+
+  .footer p {
+    font-size: 0.8rem; /* Smaller font size for footer text */
+  }
+}

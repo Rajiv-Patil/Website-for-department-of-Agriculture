@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Table Pagination</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+      .main-container {
+        flex: 1;
+        padding: 20px;
+        overflow-x: auto;
+        margin-top: 80px; /* Adjust for fixed header */
+        display: flex;
+        flex-direction: column;
+      }
+
+      table {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        border-collapse: collapse;
+        background-color: #fff;
+        /* margin-bottom: 400px; */
+      }
+
+      table th,
+      table td {
+        padding: 12px;
+        border: 1px solid #ddd;
+        text-align: left;
+      }
+
+      table th {
+        background-color: #c39b82;
+        color: #fff;
+      }
+
+      .pagination {
+        /* margin-top: 20px; */
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 40px;
+      }
+
+      .pagination button {
+        /* padding: 10px 15px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            cursor: pointer;
+            width: 100px; */
+        max-width: 600px;
+        padding: 12px;
+        align-self: center;
+        background-color: #8b4513;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+
+      .pagination button.active {
+        background-color: #007bff;
+        color: white;
+        border-color: #007bff;
+      }
+
+      .pagination button:hover:not(.active) {
+        background-color: #723a0f;
+      }
+
+      .pagination button:disabled {
+        background-color: #ddd;
+        cursor: not-allowed;
+      }
+
+      .footer {
+        background-color: #d8bfac;
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+        height: fit-content; /* Adjust based on content */
+      }
+      .footer .links {
+        margin-bottom: 15px;
+      }
+      .footer .links a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+        font-size: 1.2rem;
+      }
+      .footer .links a:hover {
+        color: #00000070;
+      }
+      .footer p {
+        font-size: 1.2rem;
+      }
+      .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-self: center;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        width: 50pc;
+        max-width: 70%;
+        margin-bottom: 40px;
+      }
+
+      .card-header {
+        background-color: #c39b82;
+        color: white;
+        padding: 20px;
+        border-radius: 8px 8px 0 0;
+      }
+
+      .card-header h2 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #fff;
+      }
+
+      .card-content {
+        padding: 20px;
+        align-items: center;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+        font-size: 1.2pc;
+        font-weight: 500;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #c9ab7e;
+        border-radius: 4px;
+        font-size: 14px;
+        color: #000000; /* Changed to pure black */
+      }
+
+      select option {
+        color: #000000; /* Changed dropdown options to pure black */
+        background-color: white;
+        text-align: center;
+        font-size: 1.2pc;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: #c9ab7e;
+        box-shadow: 0 0 0 2px rgba(201, 171, 126, 0.2);
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+      .subbut {
+        display: flex;
+        justify-content: center;
+      }
+      button {
+        max-width: 600px;
+        padding: 12px;
+        align-self: center;
+        background-color: #8b4513;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+
+      button:hover {
+        background-color: #723a0f;
+      }
+
+      .success-message {
+        display: none;
+        color: green;
+        margin-top: 10px;
+        text-align: center;
+      }
+
+      .error-message {
+        color: red;
+        font-size: 12px;
+        margin-top: 5px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-light"
+      style="background-color: #d8bfac"
+    >
+      <div class="container">
+        <a
+          class="navbar-brand transition-scale"
+          href="../homepage/homepage.html"
+        >
+          <img
+            src="https://agriwelfare.gov.in/public/images/agriculture-logo-dark.png"
+            height="40px"
+          />
+        </a>
+        <h3>Department of Agriculture</h3>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto text-center">
+            <li class="nav-item">
+              <a
+                class="nav-link transition-scale mx-3"
+                href="../About Us/ode.html"
+                >About Us</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link transition-scale mx-3"
+                href="../recruitment/recru.html"
+                >Recruitment</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link transition-scale mx-3"
+                href="../media/photo.html"
+                >Gallery</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link transition-scale mx-3"
+                href="../Downloads/Download.html"
+                >Downloads</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link transition-scale mx-3"
+                href="../audiovideo3.html"
+                >Media</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link transition-scale mx-3"
+                href="../wd project/internship2.html"
+                >Internship</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link transition-scale mx-3"
+                href="../TermsCondions/terms.html"
+                >Legal</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="main-container">
+      <table>
+        <h1 style="text-align: center; color: #c39b82">Vacancies</h1>
+        <thead>
+          <tr>
+            <th>SR. NO</th>
+            <th>TITLE</th>
+            <th>START DATE</th>
+            <th>END DATE</th>
+            <th>PUBLISH DATE</th>
+            <th>DETAILS</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          <!-- Data will be inserted here dynamically -->
+        </tbody>
+      </table>
+    </div>
+    <div class="pagination">
+      <button id="prev-btn" onclick="changePage(-1)">Previous</button>
+      <span id="page-number">Page 1</span>
+      <button id="next-btn" onclick="changePage(1)">Next</button>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h2>Feedback & Suggestions</h2>
+      </div>
+      <div class="card-content">
+        <form id="feedbackForm">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required />
+            <div class="error-message" id="nameError"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+            <div class="error-message" id="emailError"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="contactNumber">Contact Number</label>
+            <input type="tel" id="contactNumber" name="contactNumber" />
+            <div class="error-message" id="contactError"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="type">Type</label>
+            <select id="type" name="type">
+              <option value="suggestion">Suggestion</option>
+              <option value="complaint">Complaint</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" required></textarea>
+            <div class="error-message" id="messageError"></div>
+          </div>
+          <div class="subbut">
+            <button type="submit">Submit Feedback</button>
+          </div>
+          <div class="success-message" id="successMessage">
+            Thank you for your feedback!
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="links">
+        <a href="#">RTI</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Website Policies</a>
+        <a href="#">Help</a>
+        <a href="#">Feedback</a>
+        <a href="#">Web Information Manager</a>
+        <a href="#">Tenders</a>
+        <a href="#">Recruitments</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Sitemap</a>
+      </div>
+      <hr />
+      <p>
+        For more information about the MoAFW, please contact at:
+        <a href="mailto:us-it@gov.in" style="color: white"
+          >argi.gov@gmail.com</a
+        >
+      </p>
+      <p>
+        Website Content Owned & Managed by Department of Agriculture & Farmers
+        Welfare | MoA & FW | Government of India, India<br />
+        Designed and Developed by DAD/IT, Ministry of Agriculture, New Delhi,
+        India.<br />
+        Last Updated On: 20 Jan 2025<br />
+        Visitors: 2563308
+      </p>
+    </div>
+
+    <script>
+      const data = [
+        {
+          srNo: 1,
+          title: "Staff Car Driver Vacancy",
+          startDate: "30-12-2024",
+          endDate: "27-02-2025",
+          publishDate: "30-12-2024",
+          details: "<a href=''>Download</a>",
+        },
+        {
+          srNo: 2,
+          title: "Assistant Library Officer",
+          startDate: "28-12-2024",
+          endDate: "25-02-2025",
+          publishDate: "28-12-2024",
+          details: "<a href='#'>Download</a>",
+        },
+        {
+          srNo: 3,
+          title: "Administrative Officer, CIH",
+          startDate: "28-12-2024",
+          endDate: "25-02-2025",
+          publishDate: "27-12-2024",
+          details: "<a href='#'>Download</a>",
+        },
+        {
+          srNo: 4,
+          title: "Consultant for International Cooperation",
+          startDate: "26-12-2024",
+          endDate: "27-01-2025",
+          publishDate: "26-12-2024",
+          details: "<a href='#'>Download</a>",
+        },
+        {
+          srNo: 5,
+          title: "Young Professionals Recruitment",
+          startDate: "26-12-2024",
+          endDate: "27-01-2025",
+          publishDate: "26-12-2024",
+          details: "<a href='#'>Download</a>",
+        },
+        {
+          srNo: 6,
+          title: "Director, Central Institute of Horticulture",
+          startDate: "09-12-2024",
+          endDate: "20-01-2025",
+          publishDate: "09-12-2024",
+          details: "<a href='#'>Download</a>",
+        },
+        {
+          srNo: 7,
+          title: "Deputy Agricultural Marketing Adviser",
+          startDate: "09-12-2024",
+          endDate: "08-02-2025",
+          publishDate: "09-12-2024",
+          details: "<a href='#'>Download</a>",
+        },
+        {
+          srNo: 8,
+          title: "Young Professionals for Oilseeds Division",
+          startDate: "09-12-2024",
+          endDate: "08-02-2025",
+          publishDate: "09-12-2024",
+          details: "<a href='#'>Download</a>",
+        },
+        {
+          srNo: 9,
+          title: "Economic Officer Recruitment Rules",
+          startDate: "03-12-2024",
+          endDate: "01-01-2025",
+          publishDate: "03-12-2024",
+          details: "<a href='#'>Download</a>",
+        },
+        {
+          srNo: 10,
+          title: "Economic Officer Draft Rules",
+          startDate: "02-12-2024",
+          endDate: "01-01-2025",
+          publishDate: "02-12-2024",
+          details: "<a href='#'>Download</a>",
+        },
+        {
+          srNo: 11,
+          title: "Technical Clerk Recruitment",
+          startDate: "02-12-2024",
+          endDate: "01-01-2025",
+          publishDate: "02-12-2024",
+          details: "<a href='#'>Download</a>",
+        },
+        {
+          srNo: 12,
+          title: "Private Secretary, Varanasi",
+          startDate: "30-11-2024",
+          endDate: "28-01-2025",
+          publishDate: "30-11-2024",
+          details: "<a href='#'>Download</a>",
+        },
+        {
+          srNo: 13,
+          title: "Chief Seed Analyst Vacancy",
+          startDate: "23-11-2024",
+          endDate: "21-01-2025",
+          publishDate: "23-11-2024",
+          details: "<a href='#'>Download</a>",
+        },
+        {
+          srNo: 14,
+          title: "Director (Forestry) Deputation",
+          startDate: "16-11-2024",
+          endDate: "15-01-2025",
+          publishDate: "16-11-2024",
+          details: "<a href='#'>Download</a>",
+        },
+        {
+          srNo: 15,
+          title: "Director (Water Management) Deputation",
+          startDate: "16-11-2024",
+          endDate: "15-01-2025",
+          publishDate: "16-11-2024",
+          details: "<a href='#'>Download</a>",
+        },
+        {
+          srNo: 16,
+          title: "Technical Expert (Forestry)",
+          startDate: "16-11-2024",
+          endDate: "15-01-2025",
+          publishDate: "16-11-2024",
+          details: "<a href='#'>Download</a>",
+        },
+        {
+          srNo: 17,
+          title: "Senior Technical Assistant",
+          startDate: "16-11-2024",
+          endDate: "15-01-2025",
+          publishDate: "16-11-2024",
+          details: "<a href='#'>Download</a>",
+        },
+        {
+          srNo: 18,
+          title: "Joint Director (FI) Directorate of Extension",
+          startDate: "31-01-2025",
+          endDate: "31-2-2025",
+          publishDate: "20-1-2025",
+          details: "<a href='#'>Download</a>",
+        },
+        {
+          srNo: 19,
+          title: "Fisheries Development Officer",
+          startDate: "05-11-2024",
+          endDate: "30-12-2024",
+          publishDate: "05-11-2024",
+          details: "<a href='#'>Download</a>",
+        },
+        {
+          srNo: 20,
+          title: "Agriculture Extension Officer",
+          startDate: "02-11-2024",
+          endDate: "29-12-2024",
+          publishDate: "02-11-2024",
+          details: "<a href='#'>Download</a>",
+        },
+      ];
+
+      let currentPage = 1;
+      const entriesPerPage = 10;
+
+      function renderTable(page) {
+        const tableBody = $("#table-body");
+        tableBody.empty();
+
+        const start = (page - 1) * entriesPerPage;
+        const end = start + entriesPerPage;
+        data.slice(start, end).forEach((item) => {
+          tableBody.append(`
+      <tr>
+        <td>${item.srNo}</td>
+        <td>${item.title}</td>
+        <td>${item.startDate}</td>
+        <td>${item.endDate}</td>
+        <td>${item.publishDate}</td>
+        <td>${item.details}</td>
+      </tr>
+    `);
+        });
+
+        $("#page-number").text(`Page ${page}`);
+      }
+
+      function changePage(step) {
+        currentPage += step;
+        renderTable(currentPage);
+      }
+
+      $(document).ready(function () {
+        renderTable(currentPage);
+
+        const $burger = $("#burger");
+        const $nav = $("#nav");
+
+        $burger.on("click", function () {
+          $nav.toggleClass("nav--open");
+          $burger.toggleClass("burger--open");
+        });
+      });
+    </script>
+  </body>
+</html>
