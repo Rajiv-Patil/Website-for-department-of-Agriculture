@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DA and FW Organisation</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+        
+  /* Resetting margin and padding to ensure consistency */
+body, html {
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #333;
+    text-align: left; /* Ensuring content is aligned to the left */
+    overflow-x: hidden; /* Prevents unwanted horizontal scrolling */
+}
+nav h3{
+    color: black;
+}
+
+/* Adjusting all headings to be left-aligned */
+h1, h2, h3 {
+    color: #C39B82;
+    text-align: left; /* Ensure headings are all left-aligned */
+    margin:  0; /* Add margin above and below headings */
+    margin-left: 30px; /* Left margin to space out from the edge */
+}
+
+/* Hover effect for headings */
+h1:hover, h2:hover, h3:hover {
+    color: #A67B5B;
+    transition: color 0.3s ease;
+}
+
+/* General paragraph and list styles */
+p, ul, ol {
+    font-size: 16px;
+    color: #555;
+    margin-left: 30px; /* Add some space for readability */
+}
+
+/* Image Styling */
+.main-container img  {
+    max-width: 50%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Main Content Styling */
+.maincontent {
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    width: 90%;
+    max-width: 1200px;
+    text-align: left; /* Align text left within main content */
+}
+
+/* Container Styling */
+.main-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+/* Card Styling */
+.card {
+    background-color: #fff;
+    width: 250px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Card Image Hover Effect */
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Card Image Zoom */
+.card img:hover {
+    transform: scale(1.1);
+}
+
+/* Name and Designation Styling */
+.name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #C39B82;
+}
+
+.designation {
+    font-size: 16px;
+    color: #888;
+}
+
+/* Table Styling */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 30px;
+}
+
+table {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    margin-bottom: 400px;
+}
+
+table th, table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table th {
+    background-color: #C39B82;
+    color: #fff;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .maincontent {
+        width: 95%;
+        padding: 15px;
+    }
+    
+    .section {
+        display: block;
+        margin: 10px 0;
+    }
+    
+    .card {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    h1, h2, h3 {
+        font-size: 1.5em;
+        margin-left: 0;
+    }
+    a.logo img{
+        margin: 0%;
+    }
+    a.logo{
+        display: flex;
+        justify-content: center;
+    }
+    .maincontent {
+        width: 100%;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .main-container {
+        gap: 10px;
+    }
+
+    .card {
+        padding: 10px;
+    }
+
+    .name {
+        font-size: 16px;
+    }
+
+    .designation {
+        font-size: 14px;
+    }
+}
+
+    
+
+    /* Table Styling */
+.table-container {
+    width: 100%;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    margin-top: 30px;
+    margin-left: 20px; /* Added left margin */
+    margin-right: 20px; /* Added right margin */
+}
+
+table {
+    width: 100%;
+    max-width: 1100px; /* Ensures all tables are the same size */
+    margin: 0 auto; /* Centers the table */
+    border-collapse: collapse;
+    background-color: #fff;
+}
+
+table th, table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table th {
+    background-color: #C39B82;
+    color: #fff;
+}
+
+
+
+    .table-container {
+    width: 100%;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    margin-top: 30px;
+    margin-left: 20px; /* Added left margin */
+    margin-right: 20px; /* Added right margin */
+}
+
+
+
+.footer {
+        background-color: #d8bfac;
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+        height: fit-content; /* Adjust based on content */
+      }
+      .footer .links {
+        margin-bottom: 15px;
+      }
+      .footer .links a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+        font-size: 1.2rem;
+      }
+      .footer .links a:hover {
+        color: #00000070;
+      }
+      .footer p {
+        font-size: 1.2rem;
+        color: #fff;
+      }
+    </style>
+
+</head>
+<body>
+    <nav
+      class="navbar navbar-expand-lg navbar-light"
+      style="background-color: #d8bfac"
+    >
+      <div class="container">
+        <a
+          class="navbar-brand transition-scale"
+          href="../homepage/homepage.html"
+        >
+          <img
+            src="https://agriwelfare.gov.in/public/images/agriculture-logo-dark.png"
+            height="40px"
+          />
+        </a>
+        <h3>Department of Agriculture</h3>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto text-center">
+            <li class="nav-item">
+              <a
+                class="nav-link transition-scale mx-3"
+                href="../About Us/ode.html"
+                >About Us</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link transition-scale mx-3"
+                href="../recruitment/recru.html"
+                >Recruitment</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link transition-scale mx-3"
+                href="../media/photo.html"
+                >Gallery</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link transition-scale mx-3"
+                href="../Downloads/Download.html"
+                >Downloads</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link transition-scale mx-3"
+                href="../wd project/audiovideo3.html"
+                >Media</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link transition-scale mx-3"
+                href="../wd project/internship2.html"
+                >Internship</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link transition-scale mx-3"
+                href="../TermsCondions/terms.html"
+                >Legal</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="maincontent">
+        <h1>DA and FW Organisation</h1>
+        <p>
+            The DA & FW is organized into 28 Divisions and has five attached offices and twenty-one subordinate offices which are spread across the country for coordination with state level agencies and implementation of Central Sector Schemes in their respective fields. Further, one Public Sector Undertaking, nine autonomous bodies, ten national level cooperative organizations and two authorities are functioning under the administrative control of the Department.
+        </p>
+        <hr>
+
+        <h1>Honourable Ministers</h1>
+        <div class="main-container">
+            <div class="card">
+                <img src="shivraj singh.png" alt="Shri Shivraj Singh Chouhan">
+                <div class="name">Shri Shivraj Singh Chouhan</div>
+                <div class="designation">Hon'ble Minister of Agriculture & Farmers Welfare</div>
+            </div>
+            <div class="card">
+                <img src="ramnath thakur.png" alt="Shri Ramnath Thakur">
+                <div class="name">Shri Ramnath Thakur</div>
+                <div class="designation">Hon'ble Minister of State</div>
+            </div>
+            <div class="card">
+                <img src="shrichoudhary.png" alt="Shri Bhagirath Choudhary">
+                <div class="name">Shri Bhagirath Choudhary</div>
+                <div class="designation">Hon'ble Minister of State</div>
+            </div>
+        </div>
+
+        <hr>
+
+        <h1>Office of Hon'ble Minister of Agriculture & Farmers Welfare</h1>
+        <div class="table-container">
+        <table>
+            
+            <thead>
+
+                <tr>
+                    <th>Name</th>
+                    <th>Designation</th>
+                    <th>Phone/Email/Room No</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Shri Ravinder Kumar</td>
+                    <td>PS to Minister</td>
+                    <td>23383370, 23782691, 23782594, 23073789<br>Email: -<br>Room No.: 119KB, Krishi Bhawan, New Delhi</td>
+                </tr>
+                <tr>
+                    <td>Shri Bhupendra Singh Paraste</td>
+                    <td>Additional PS to Minister</td>
+                    <td>23383370, 23782691<br>Email: -<br>Room No.: 118, Krishi Bhawan, New Delhi</td>
+                </tr>
+                <tr>
+                    <td>Shri Pawan Kumar Ojha</td>
+                    <td>Under Secretary</td>
+                    <td>23383370, 23782691<br>Email: -<br>Room No.: 140, Krishi Bhawan, New Delhi</td>
+                </tr>
+                <tr>
+                    <td>Shri Avinash Kumar Arya</td>
+                    <td>1st PA to Minister</td>
+                    <td>23383370, 23782691<br>Email: -<br>Room No.: 140, Krishi Bhawan, New Delhi</td>
+                </tr>
+                <tr>
+                    <td>Shri Anil Prakash Dubey</td>
+                    <td>Section Officer</td>
+                    <td>Email: -<br>Room No.: Krishi Bhawan, New Delhi</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <hr>
+
+        
+        <div class="table-container">
+        <table>
+            <thead>
+                
+                <tr>
+                    <th>Name</th>
+                    <th>Designation</th>
+                    <th>Phone/Email/Room No</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Shri Karmchand Choudhary</td>
+                    <td>Additional PS to Hon'ble MOS (Agri & Farmers Welfare)</td>
+                    <td>23388165, 23382756, 23782565, 23782343<br>Email: -<br>Room No.: 156, Krishi Bhawan, New Delhi</td>
+                </tr>
+                <tr>
+                    <td>Ms. Neha Chaudhary</td>
+                    <td>Under Secretary (o/o MOS (Agri. & FW))</td>
+                    <td>23388165, 23382756, 23782565, 23782343, 23074190(F)<br>Email: mosafwoffice@gmail.com<br>Room No.: 199-N, Krishi Bhawan, New Delhi</td>
+                </tr>
+                <tr>
+                    <td>Shri Kishan Lal Jat</td>
+                    <td>Assistant PS to Hon'ble MOS (Agri & Farmers Welfare)</td>
+                    <td>23388165, 23382756, 23782565, 23782343<br>Email: kishanparliament@gmail.com<br>Room No.: 199-M, Krishi Bhawan, New Delhi</td>
+                </tr>
+                <tr>
+                    <td>Shri Chander Kant Verma</td>
+                    <td>Section Officer (O/O MOS (Agri.&FW))</td>
+                    <td>23388165, 23382756, 23782565, 23782343, 23074190(F)<br>Email: mosafwoffice@gmail.com<br>Room No.: 199-L, Krishi Bhawan, New Delhi</td>
+                </tr>
+                <tr>
+                    <td>Shri Kamlesh Kumar Mishra</td>
+                    <td>Additional PS to Hon'ble MOS (Agri & Farmers Welfare)</td>
+                    <td>23383975, 23383976, 23383971 (F)<br>Email: mos-agri@nic.in<br>Room No.: 325, Krishi Bhawan, New Delhi</td>
+                </tr>
+                <tr>
+                    <td>Shri Ashutosh Kumar</td>
+                    <td>PS to Hon'ble MOS (Agri & Farmers Welfare)</td>
+                    <td>23383975, 23383976, 23383971 (F)<br>Email: ashutoshkumar.irs@gov.<br>Room No.: 323, Krishi Bhawan, New Delhi</td>
+                </tr>
+            </tbody>
+        </table></div>
+
+        
+
+        <h1>WHO'S WHO</h1>
+        
+        <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>NAME</th>
+                    <th>DESIGNATION</th>
+                    <th>EMAIL</th>
+                    <th>OFFICE</th>
+                    <th>EPABX</th>
+                    <th>ROOM NO</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Shri Sihvraj Singh Chouhan</td>
+                    <td>Hon'ble Minister of Agriculture & Farmers Welfare</td>
+                    <td>agrimini.jindalaj@jamaildolj.com</td>
+                    <td>23383370, 23782691</td>
+                    <td>120</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Shri Ravinder Kumar</td>
+                    <td>PS to Minister</td>
+                    <td></td>
+                    <td>23383370, 23782691, 23782594, 23073789</td>
+                    <td>119KB</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Shri Bhupendra Singh Paraste</td>
+                    <td>Additional PS to Minister</td>
+                    <td></td>
+                    <td>23383370, 23782691</td>
+                    <td>118</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Shri Pawan Kumar Ojha</td>
+                    <td>Under Secretary</td>
+                    <td></td>
+                    <td>23383370, 23782691</td>
+                    <td>140</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Shri Avinash Kumar Arya</td>
+                    <td>1st PA to Minister</td>
+                    <td></td>
+                    <td>23383370, 23782691</td>
+                    <td>140</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table></div>
+    </div>
+    <div class="table-container">
+    <table>
+                   
+                          
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Designation</th>
+                <th>Phone/Email/Room No</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Shri Karmchand Choudhary</td>
+                <td>Additional PS to Hon'ble MOS (Agri & Farmers Welfare)</td>
+                <td>
+                    <strong>23388165, 23382756, 23782565, 23782343</strong><br>
+                    <strong>Email:</strong> -<br>
+                    <strong>Room No.:</strong> 156, Krishi Bhawan, New Delhi
+                </td>
+            </tr>
+            <tr>
+                <td>Ms. Neha Chaudhary</td>
+                <td>Under Secretary (o/o MOS (Agri. & FW))</td>
+                <td>
+                    <strong>23388165, 23382756, 23782565, 23782343, 23074190(F)</strong><br>
+                    <strong>Email:</strong> mosafwoffice@gmail.com<br>
+                    <strong>Room No.:</strong> 199-N, Krishi Bhawan, Krishi Bhawan, New Delhi
+                </td>
+            </tr>
+            <tr>
+                <td>Shri Kishan Lal Jat</td>
+                <td>Assistant PS to Hon'ble MOS (Agri & Farmers Welfare)</td>
+                <td>
+                    <strong>23388165, 23382756, 23782565, 23782343</strong><br>
+                    <strong>Email:</strong> kishanparliament@gmail.com<br>
+                    <strong>Room No.:</strong> 199-M, Krishi Bhawan, New Delhi
+                </td>
+            </tr>
+            <tr>
+                <td>Shri Chander Kant Verma</td>
+                <td>Section Officer (O/O MOS (Agri.&FW))</td>
+                <td>
+                    <strong>23388165, 23382756, 23782565, 23782343, 23074190(F)</strong><br>
+                    <strong>Email:</strong> mosafwoffice@gmail.com<br>
+                    <strong>Room No.:</strong> 199-L, Krishi Bhawan, New Delhi
+                </td>
+            </tr>
+            <tr>
+                <td>Shri Kamlesh Kumar Mishra</td>
+                <td>Additional PS to Hon'ble MOS (Agri & Farmers Welfare)</td>
+                <td>
+                    <strong>23383975, 23383976, 23383971 (F)</strong><br>
+                    <strong>Email:</strong> mos-agri@nic.in<br>
+                    <strong>Room No.:</strong> 325, Krishi Bhawan, New Delhi
+                </td>
+            </tr>
+            <tr>
+                <td>Shri Ashutosh Kumar</td>
+                <td>PS to Hon'ble MOS (Agri & Farmers Welfare)</td>
+                <td>
+                    <strong>23383975, 23383976, 23383971 (F)</strong><br>
+                    <strong>Email:</strong> ashutoshkumar.irs@gov.in<br>
+                    <strong>Room No.:</strong> 323, Krishi Bhawan, New Delhi
+                </td>
+            </tr>
+        </tbody>
+    </table></div>
+    <head>
+
+        
+        
+        
+      
+    <head>
+        
+        <title>Who's Who </title>
+        
+    </head>
+  
+    
+    
+    
+    
+    <div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>NAME</th>
+                <th>DESIGNATION</th>
+                <th>EMAIL</th>
+                <th>OFFICE</th>
+                <th>EPABX</th>
+                <th>ROOM NO</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Shri Sihvraj Singh Chouhan</td>
+                <td>Hon'ble Minister of Agriculture & Farmers Welfare</td>
+                <td>agrimini.jindalaj@gmail.com</td>
+                <td>23383370, 23782691</td>
+                <td>120</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Shri Ravinder Kumar</td>
+                <td>PS to Minister</td>
+                <td></td>
+                <td>23383370, 23782691, 23782594, 23073789</td>
+                <td>119KB</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Shri Bhupendra Singh Paraste</td>
+                <td>Additional PS to Minister</td>
+                <td></td>
+                <td>23383370, 23782691</td>
+                <td>118</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Shri Pawan Kumar Ojha</td>
+                <td>Under Secretary</td>
+                <td></td>
+                <td>23383370, 23782691</td>
+                <td>140</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Shri Avinash Kumar Arya</td>
+                <td>1st PA to Minister</td>
+                <td></td>
+                <td>23383370, 23782691</td>
+                <td>140</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table></div>
+        <div class="table-container">
+<table>
+    <thead>
+        <tr>
+            <th>NAME</th>
+            <th>DESIGNATION</th>
+            <th>EMAIL</th>
+            <th>OFFICE</th>
+            <th>EPABX</th>
+            <th>ROOM NO.</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Shri Bhagirath Choudhary</td>
+            <td>Hon'ble Minister of State (Agri & Farmers Welfare)</td>
+            <td>bhagirath@dotchaudhary@samad.nic.in</td>
+            <td>23388165, 23382756, 23782565, 23782343</td>
+            <td>4156</td>
+            <td>199-Q Krishi Bhavan</td>
+        </tr>
+        <tr>
+            <td>Shri Karmchand Choudhary</td>
+            <td>Additional PS to Hon'ble MOS (Agri & Farmers Welfare)</td>
+            <td></td>
+            <td>23388165, 23382756, 23782565, 23782343</td>
+            <td></td>
+            <td>156</td>
+        </tr>
+        <tr>
+            <td>Ms. Neha Chaudhary</td>
+            <td>Under Secretary (o/o MOS (Agri. & PW))</td>
+            <td>mosahwoffice@gmail.com</td>
+            <td>23388165, 23382756, 23782565, 23782343, 23074190(F)</td>
+            <td>4299-DoAfw, 6689-ICAR</td>
+            <td>199-N Krishi Bhavan</td>
+        </tr>
+        <tr>
+            <td>Shri Kishan Lal Jat</td>
+            <td>Assistant PS to Hon'ble MOS (Agri & Farmers Welfare)</td>
+            <td>kishanparliamen@gmail.com</td>
+            <td>23388165, 23382756, 23782565, 23782343</td>
+            <td>4156-DoAfw&6689-ICAR</td>
+            <td>199-M</td>
+        </tr>
+        <tr>
+            <td>Shri Chander Kant Verma</td>
+            <td>Section Officer(O/O MOS(Agri.&PW))</td>
+            <td>mosahwoffice@gmail.com</td>
+            <td>23388165, 23382756, 23782565, 23782343, 23074190(F)</td>
+            <td>4156-DoAfw, 6689-ICAR</td>
+            <td>199-L</td>
+        </tr>
+        <tr>
+            <td>Shri Rannath Thakur</td>
+            <td>Hon'ble Minister of State (Agri & Farmers Welfare)</td>
+            <td>mos-agrifathic.in</td>
+            <td>23383975, 23383976</td>
+            <td></td>
+            <td>322</td>
+        </tr>
+        <tr>
+            <td>Shri Kamlesh Kumar Mishra</td>
+            <td>Additional PS to Hon'ble MOS (Agri & Farmers Welfare)</td>
+            <td>mos-agrifathic.in</td>
+            <td>23383975, 23383976, 23383971 (F)</td>
+            <td>5118</td>
+            <td>325</td>
+        </tr>
+        <tr>
+            <td>Shri Ashutosh Kumar</td>
+            <td>PS to Hon'ble MOS (Agri & Farmers Welfare)</td>
+            <td>ashutoshkumar.irs@gov.in</td>
+            <td>23383975, 23383976, 23383971 (F)</td>
+            <td></td>
+            <td>323</td>
+        </tr>
+        <tr>
+            <td>Shri Chetan Prakash</td>
+            <td>Assistant PS to Hon'ble MOS (Agri & Farmers Welfare)</td>
+            <td></td>
+            <td>23383975, 23383976</td>
+            <td>5118</td>
+            <td>326</td>
+        </tr>
+    </tbody>
+</table></div>
+
+                
+            
+       
+
+        <div class="maincontent">
+            <title>About Us - Office of the Secretary (Agriculture & Farmers Welfare)</title>
+           
+    
+        
+       
+        
+        <h2>OFFICE OF THE SECRETARY (AGRICULTURE & FARMERS WELFARE)</h2>
+        <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>NAME</th>
+                    <th>DESIGNATION</th>
+                    <th>EMAIL</th>
+                    <th>OFFICE</th>
+                    <th>EPABX</th>
+                    <th>ROOM NO</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Shri Devesh Chaturvedi</td>
+                    <td>Secretary</td>
+                    <td>secy-agril@gov.in</td>
+                    <td>23382651, 23388444</td>
+                    <td>4918</td>
+                    <td>115</td>
+                </tr>
+                <tr>
+                    <td>Shri KJVN Mohan Rao</td>
+                    <td>PPS</td>
+                    <td>secy-agril@gov.in</td>
+                    <td>23382651, 23388444</td>
+                    <td>4125</td>
+                    <td>125</td>
+                </tr>
+                <tr>
+                    <td>Shri GYSSL Narasimham</td>
+                    <td>PPS</td>
+                    <td>secy-agril@gov.in</td>
+                    <td>23382651, 23388444</td>
+                    <td>4954</td>
+                    <td>125</td>
+                </tr>
+                <tr>
+                    <td>Personal Section</td>
+                    <td></td>
+                    <td>secy-agril@gov.in</td>
+                    <td>23382651, 23388444</td>
+                    <td>4126</td>
+                    <td>126</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <h2>OFFICE OF THE CHIEF EXECUTIVE OFFICER (NRAA)</h2>
+        <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>NAME</th>
+                    <th>DESIGNATION</th>
+                    <th>EMAIL</th>
+                    <th>OFFICE</th>
+                    <th>EPABX</th>
+                    <th>ROOM NO</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Shri Faiz Ahmed Kidwai</td>
+                    <td>CEO, NRAA</td>
+                    <td>faizkidwai@nic.in</td>
+                    <td>23070306, 23070916</td>
+                    <td>4127</td>
+                    <td>131</td>
+                </tr>
+                <tr>
+                    <td>Shri Sanjeeb Khanna</td>
+                    <td>PPS</td>
+                    <td>sanjeeb@nic.in</td>
+                    <td>23383830, 23070257</td>
+                    <td>4419</td>
+                    <td>143</td>
+                </tr>
+            </tbody>
+        </table></div>
+        <h2>OFFICE OF PRINCIPAL ECONOMIC ADVISOR</h2>
+        <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>NAME</th>
+                    <th>DESIGNATION</th>
+                    <th>EMAIL</th>
+                    <th>OFFICE</th>
+                    <th>EPABX</th>
+                    <th>ROOM NO</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Shri Devaji Khound</td>
+                    <td>Principal Economic Advisor (AER, MSP & CCS)</td>
+                    <td>dkhound@nic.in</td>
+                    <td>23385931, 23382719</td>
+                    <td>4940</td>
+                    <td>244</td>
+                </tr>
+                <tr>
+                    <td>Shri S.S. Rawat</td>
+                    <td>Senior PPS to Pr. EA</td>
+                    <td>ssrawat@nic.in</td>
+                    <td>23385931, 23382719</td>
+                    <td>4148</td>
+                    <td>243-A</td>
+                </tr>
+                <tr>
+                    <td>Shri Anshul Kapil</td>
+                    <td>PA to Pr. EA</td>
+                    <td>anshul@nic.in</td>
+                    <td>23385931, 23382719</td>
+                    <td>4148</td>
+                    <td>243-A</td>
+                </tr>
+                <tr>
+                    <td>Shri Arun Kumar</td>
+                    <td>Sr. Economic and Statistical Advisor</td>
+                    <td>office@nic.in</td>
+                    <td>23384036, 23382016</td>
+                    <td>4144</td>
+                    <td>144</td>
+                </tr>
+                <tr>
+                    <td>Ms. Meena Nagpal</td>
+                    <td>Sr. PPS</td>
+                    <td>meena@nic.in</td>
+                    <td>23384036, 23382016</td>
+                    <td>4952</td>
+                    <td>152-A</td>
+                </tr>
+                <tr>
+                    <td>Shri Poqja Kohli</td>
+                    <td>PS. To Senior ESA</td>
+                    <td>pooqja@nic.in</td>
+                    <td>23384036, 23382016</td>
+                    <td>4952</td>
+                    <td>152-A</td>
+                </tr>
+            </tbody>
+        </table></div>
+
+
+       
+
+
+    <title>About Us - List of Additional Secretary & Equivalent</title>
+    
+
+
+
+
+
+<h2>LIST OF ADDITIONAL SECRETARY & EQUIVALENT</h2>
+<div class="table-container">
+<table>
+    <thead>
+        <tr>
+            <th>NAME</th>
+            <th>DESIGNATION</th>
+            <th>EMAIL</th>
+            <th>OFFICE</th>
+            <th>EVADX</th>
+            <th>ROOM NO</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Shri Dengji Khoand</strong></td>
+            <td>Principal Economic Adviser(ASP)</td>
+            <td>dkhoand@nic.in</td>
+            <td>23382719, 23385931</td>
+            <td>4940</td>
+            <td>244</td>
+        </tr>
+        <tr>
+            <td><strong>Shri S. S. Rawat</strong></td>
+            <td>Senior PPS to Pr. EA</td>
+            <td>ss.rawat@nic.in</td>
+            <td>23382719, 23385931</td>
+            <td>4148</td>
+            <td>243-A</td>
+        </tr>
+        <tr>
+            <td><strong>Dr. Pramod Kumar Meherda</strong></td>
+            <td>Additional Secretary (Farmers Welfare/Digital Agriculture/CEO)</td>
+            <td>pkl.meherda@nic.in</td>
+            <td>23381176</td>
+            <td>4297</td>
+            <td>131</td>
+        </tr>
+        <tr>
+            <td><strong>Shri N. Sankar</strong></td>
+            <td>PPS</td>
+            <td></td>
+            <td>23381176, 23382417</td>
+            <td>4297</td>
+            <td>130</td>
+        </tr>
+        <tr>
+            <td><strong>Shri Manoj Khattar</strong></td>
+            <td>PPS</td>
+            <td></td>
+            <td>23383744, 23382977(PAX)</td>
+            <td>4130</td>
+            <td>142-A</td>
+        </tr>
+        <tr>
+            <td><strong>Ms. Maninder Kaur Dwivedi</strong></td>
+            <td>Additional Secretary(DM-BKVY-Seeds)</td>
+            <td>maninder.ecidud@nic.in</td>
+            <td>23388656,2338219</td>
+            <td>4999</td>
+            <td>134</td>
+        </tr>
+        <tr>
+            <td><strong>Shri Anoop Singh Rawat</strong></td>
+            <td>PSO</td>
+            <td>anoop.rawat@nic.in</td>
+            <td>23388656,2338219</td>
+            <td>4240</td>
+            <td>132</td>
+        </tr>
+        <tr>
+            <td><strong>Ms. Leela sabu</strong></td>
+            <td>PPS</td>
+            <td></td>
+            <td>23382219, 23388656</td>
+            <td>4240</td>
+            <td>132</td>
+        </tr>
+        <tr>
+            <td><strong>Shri Faiz Ahmed Kidwai</strong></td>
+            <td>Additional Secretary (RFS/NRM/Climatic Change/PP/Policy & Coord/Marketing)</td>
+            <td>fajdoljkkdwai@nic.in</td>
+            <td>23070306,23070916</td>
+            <td>4127</td>
+            <td>131</td>
+        </tr>
+        <tr>
+            <td><strong>Shri Sanjeeb Khanna</strong></td>
+            <td>PPS</td>
+            <td>sanjeeb.khanna6@nic.in</td>
+            <td>23383830, 23070557</td>
+            <td>4419</td>
+            <td>143</td>
+        </tr>
+        <tr>
+            <td><strong>Shri Sanjiv Narain Mathur</strong></td>
+            <td>Additional Secretary & FA</td>
+            <td>asfa-agr@nic.in</td>
+            <td>23381363, 23382532</td>
+            <td>4968</td>
+            <td>136</td>
+        </tr>
+        <tr>
+            <td><strong>Shri N.K. Sood</strong></td>
+            <td>Principal Staff officer</td>
+            <td></td>
+            <td>2338136, 23382530</td>
+            <td>4135</td>
+            <td>135</td>
+        </tr>
+        <tr>
+            <td><strong>Dr. Praveen Kumar Singh</strong></td>
+            <td>Agriculture Commissioner</td>
+            <td>comm-agr@apo.in</td>
+            <td>23383549, 23381012</td>
+            <td>5130</td>
+            <td>223</td>
+        </tr>
+        <tr>
+            <td><strong>Shri G.M. Rao</strong></td>
+            <td>PS</td>
+            <td></td>
+            <td>23381012, 23383549</td>
+            <td>4921</td>
+            <td>217-A</td>
+        </tr>
+    </tbody>
+</table></div>
+<h2>JOINT SECRETARY & EQUIVALENT</h2>
+<div class="table-container">
+<table>
+    <thead>
+        <tr>
+            <th>NAME</th>
+            <th>DESIGNATION</th>
+            <th>EMAIL</th>
+            <th>OFFICE</th>
+            <th>EVER.</th>
+            <th>ROOM NO</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Shri Navin Kumar Vidyarthi</td>
+            <td>Adviser (ES&E)</td>
+            <td>navin.vidyarthi@nick.in</td>
+            <td>23382434</td>
+            <td>4987</td>
+            <td>446</td>
+        </tr>
+        <tr>
+            <td>Smt. Mamta Madan</td>
+            <td>PPS to Adviser</td>
+            <td>mamta.madam@gmail.com</td>
+            <td>23382434</td>
+            <td>4953</td>
+            <td>447</td>
+        </tr>
+        <tr>
+            <td>Ms. Chandan Mishra Dwivedi</td>
+            <td>Chief Controller of Accounts (M/o Agriculture & FW and M/o FAM&D)</td>
+            <td>cca-agrilatgov.in</td>
+            <td>23382440, 23384611, 23387862</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Shri Franklin L. Khobung</td>
+            <td>Joint Secretary (NRMVERS)</td>
+            <td>franklin.@cick.in</td>
+            <td>23381757, 23388756</td>
+            <td>4220</td>
+            <td>299 C</td>
+        </tr>
+        <tr>
+            <td>Shri Rama Vishal Malhotra</td>
+            <td>PPS to JS (RFS/NRM)</td>
+            <td>rama.malhotra@gmail.com</td>
+            <td>23381757, 23388756</td>
+            <td>4883</td>
+            <td>299 D</td>
+        </tr>
+        <tr>
+            <td>Smt. Rama Vishal Malhotra</td>
+            <td>PPS</td>
+            <td>rama.malhotra@gmail.com</td>
+            <td>23381757, 23388756</td>
+            <td>4883</td>
+            <td>299 D</td>
+        </tr>
+        <tr>
+            <td>Smt Perin Devi</td>
+            <td>Joint Secretary (Policy & Coordination)</td>
+            <td>perin.dev@nick.in</td>
+            <td>23386124,23389614</td>
+            <td>4555</td>
+            <td>189</td>
+        </tr>
+        <tr>
+            <td>Shri V.V Nagamani</td>
+            <td>PPS to JS (Policy & Coordination)</td>
+            <td>v.nagamani@gmail.com</td>
+            <td>23386124,23389614</td>
+            <td>4958</td>
+            <td>187</td>
+        </tr>
+        <tr>
+            <td>Shri Priya Ranjan</td>
+            <td>Joint Secretary (Horitculture)</td>
+            <td>jsmidn-agrilat gov.in</td>
+            <td>23389208, 23389441</td>
+            <td>4224</td>
+            <td>224</td>
+        </tr>
+        <tr>
+            <td>Shri Ajay Sareen</td>
+            <td>PPS</td>
+            <td>ajay.sareen@gmail.com</td>
+            <td>23389208, 23389441</td>
+            <td>4624</td>
+            <td>224-A</td>
+        </tr>
+        <tr>
+            <td>Shri Muktanand Agrawal</td>
+            <td>Joint Secretary (PP/ CEO-PMER)</td>
+            <td>muktanand@nick.in</td>
+            <td>23382444</td>
+            <td>4925</td>
+            <td>227</td>
+        </tr>
+        <tr>
+            <td>Shri Samuel Praveen Kumar</td>
+            <td>Joint Secretary (Extn. & Investment& Market/Price support(I &MPSAIF))</td>
+            <td>sampraveen@gov.in</td>
+            <td>23073384, 23384468</td>
+            <td>4928</td>
+            <td>133</td>
+        </tr>
+        <tr>
+            <td>Smt. Neelam Kumar</td>
+            <td>Senior PPS</td>
+            <td>neelam.kumar@gmail.com</td>
+            <td>011-23384468, 23073384</td>
+            <td>4632</td>
+            <td>137-A</td>
+        </tr>
+    </tbody>
+</table></div>
+
+
+
+        
+        
+        
+
+           
+            <h2>Department At A Glance</h2>
+        
+            <p><b>Agriculture</b> plays a vital role in India's economy. <b>54.6%</b> of the total workforce is engaged in agriculture and allied sector activities (Census 2011). Agriculture and Allied sector accounts for <b>18.4%</b> of India's GVA at current prices during <b>2022-23</b>. Given the importance of the agriculture sector, the Government of India has taken several steps for its development in a sustainable manner.</p>
+        
+            <h3>Department of Agriculture & Farmers Welfare (DA&FW)</h3>
+        
+            <p>The <b>Department of Agriculture & Farmers Welfare (DA&FW)</b> is one of the two constituent departments of the <b>Ministry of Agriculture & Farmers Welfare</b>. This department is headed by the <b>Agriculture & Farmers Welfare Minister</b> and is assisted by two Ministers of State. The <b>Secretary (A&FW)</b> is the administrative head of the department.</p>
+        
+            <p>The Secretary is assisted by:</p>
+            <ul>
+                <li>Five Additional Secretaries (including one Financial Adviser)</li>
+                <li>10 Joint Secretaries</li>
+                <li>One Agriculture Commissioner</li>
+                <li>Horticulture Commissioner</li>
+                <li>Senior Economic Advisor</li>
+                <li>Horticulture Statistics Advisor</li>
+                <li>Advisor Cost and Deputy Director General</li>
+            </ul>
+        
+            <p>Additionally, the <b>Chairman of the Commission for Agriculture Costs and Prices (CACP)</b> advises the department on pricing policies for selected agricultural crops.</p>
+        
+            <h3>Structure of DA&FW</h3>
+        
+            <p>The DA&FW is organized into:</p>
+            <ul>
+                <li>28 divisions</li>
+                <li>Five attached offices</li>
+                <li>21 subordinate offices spread across the country</li>
+                <li>One Public Sector Undertaking</li>
+                <li>Seven autonomous bodies</li>
+                <li>Two authorities under its administrative control</li>
+            </ul>
+        
+            <h3>Land Use Statistics (2021-22)</h3>
+        
+            <p>As per <b>land use statistics for 2021-22</b>:</p>
+            <ul>
+                <li>Geographical area of India: <b>328.7 million hectares</b></li>
+                <li>Agricultural land: <b>54.8%</b></li>
+                <li>Reported net sown area: <b>141.00 million hectares</b></li>
+                <li>Gross cropped area: <b>219.158 million hectares</b></li>
+                <li>Cropping intensity: <b>155.4%</b></li>
+            </ul>
+        
+            <p>The net irrigated area in 2021-22 was <b>77.9 million hectares</b>, distributed as follows:</p>
+            <ul>
+                <li>Canal irrigation: <b>24.7%</b></li>
+                <li>Tanks: <b>2.8%</b></li>
+                <li>Tube wells: <b>47.3%</b></li>
+                <li>Other wells: <b>13.2%</b></li>
+                <li>Other sources: <b>12.0%</b></li>
+            </ul>
+        
+            <h3>Gross Value Added of Agriculture & Allied Sector (2022-23)</h3>
+        
+            <p>As per the <b>Provisional Estimates of National Income (2022-23)</b>, released by the <b>National Statistical Office (NSO)</b>, the <b>agriculture and allied sectors contributed 18.4%</b> to India’s Gross Value Added (GVA) at current prices.</p>
+        
+            <p><b>Conclusion:</b> The agriculture sector remains the backbone of India’s economy, and its contribution to employment and GDP is immense. The government continues to implement policies to ensure sustainable agricultural growth.</p>
+            <h2>Gross Value Added of Agriculture & Allied Sector (Rs. In Crore)</h2>
+            <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ITEMS</th>
+                        <th>2017-18</th>
+                        <th>2018-19</th>
+                        <th>2019-20*</th>
+                        <th>2020-21*</th>
+                        <th>2021-22*</th>
+                        <th>2022-23*</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GVA OF AGRICULTURE AND ALLIED SECTORS</td>
+                        <td>28,29,826</td>
+                        <td>30,29,925</td>
+                        <td>33,68,471</td>
+                        <td>36,95,412</td>
+                        <td>40,66,649</td>
+                        <td>45,57,599</td>
+                    </tr>
+                    <tr>
+                        <td>GVA SHARE OF AGRICULTURE AND ALLIED SECTOR (%)</td>
+                        <td>18.3</td>
+                        <td>17.6</td>
+                        <td>18.3</td>
+                        <td>20.3</td>
+                        <td>19.0</td>
+                        <td>18.4</td>
+                    </tr>
+                </tbody>
+            </table></div>
+            <div class="source">
+                <p>Source: National Statistical Office, MoSPI</p>
+                <p>*Third Revised Estimates, *Second Revised Estimates @First Revised Estimates $Provisional Estimate as on 31st May 2023</p>
+            </div>
+        
+    
+        
+        '<title>History Document</title>
+        
+        
+            <h1>HISTORY</h1>
+            
+            <p>Attached File:</p>
+            <p><a href="org_history_2017.pdf" download> Download </a></p>
+            
+            <p>Publish Date: 09-01-2021</p>
+            
+            <p><a href="https://data.gov.in" target="_blank">data.gov.in</a></p>
+            <p>national portal of India</p>
+        
+                <hr>
+        
+                <h1>Liaison Officer</h1>
+                <p><h2>Nodal officer details of the Department</h2></p>
+                <ol>
+                    <li>Nodal Officer for SC/ST - Sh. Kalu Ram Meena, Director</li>
+                    <li>Nodal Officer for OBC - Sh. Anil Jain, Deputy Secretary</li>
+                    <li>Nodal Officer for EWS - Sh. B.P. Bimal, Director</li>
+                    <li>Nodal Officer for PWD - Sh. B.P. Bimal, Director</li>
+                </ol>
+            </div>
+        </div>  
+        
+
+
+
+    
+
+    
+        <div class="footer">
+            <div class="links">
+                <a href="#">RTI</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Website Policies</a>
+                <a href="#">Help</a>
+                <a href="#">Feedback</a>
+                <a href="#">Web Information Manager</a>
+                <a href="#">Tenders</a>
+                <a href="#">Recruitments</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Sitemap</a>
+            </div>
+            <hr>
+            <p>
+                For more information about the MoAFW, please contact at: <a href="mailto:us-it@gov.in" style="color: white;">argi.gov@gmail.com</a>
+            </p>
+            <p>
+                Website Content Owned & Managed by Department of Agriculture & Farmers Welfare | MoA & FW | Government of India, India<br>
+                Designed and Developed by DAD/IT, Ministry of Agriculture, New Delhi, India.<br>
+                Last Updated On: 20 Jan 2025<br>
+                Visitors: 2563308
+            </p>
+        </div>
+    </body>
+
+</html>
