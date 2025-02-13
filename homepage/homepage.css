@@ -1,0 +1,145 @@
+.organization-info p {
+  margin: 1% 2%;
+}
+main h2 {
+  color: #c39b82;
+}
+.card > img {
+  width: 70px;
+  height: 70px;
+}
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.card {
+  height: 200px;
+  width: 200px;
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  align-items: center;
+  margin: 12px;
+}
+.card:nth-child(odd) {
+  background-color: #d8bfac;
+  transition: 0.5s ease;
+}
+
+.card:nth-child(even) {
+  transition: 0.5s ease;
+  background-color: #c39b82;
+}
+
+.card h5 {
+  font-size: 15px;
+  width: fit-content;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.agriculture-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.agrinews-container {
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  white-space: nowrap;
+  width: 500px;
+  height: 300px;
+}
+
+.agrinews:nth-child(2) {
+  width: 500px;
+}
+.reform-container > div,
+.agricontain > div {
+  width: 500px;
+  font-size: smaller;
+}
+.reform-container,
+.agricontain {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.whatsnewscontainer {
+  height: 200px;
+  overflow: scroll;
+  background-color: #c39b82;
+  border-radius: 5px;
+  width: fit-content;
+  padding: 10px;
+  white-space: wrap;
+  margin: 1% 2%;
+}
+.newscard p {
+  text-wrap: wrap;
+  width: 100%;
+  font-weight: 500;
+}
+
+.reform-container a,
+.agriculture-container a {
+  color: #00000095;
+}
+.newscard {
+  width: 90%;
+  height: fit-content;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #c39b82;
+  border-radius: 5px;
+  margin: 1% 2%;
+}
+
+.agrinews-container::-webkit-scrollbar,
+.whatsnewscontainer::-webkit-scrollbar {
+  display: none;
+}
+aside,
+section {
+  margin-bottom: 100px;
+  margin-top: 100px;
+}
+@media (max-width: 480px) {
+  .card {
+    height: 100px;
+    width: 100px;
+    margin: 5px;
+  }
+  .card > img {
+    height: 45px;
+    width: 45px;
+  }
+  .card h5 {
+    font-size: 10px;
+  }
+  .agriculture-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .whatsnewcontainer {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+  }
+  .agrinews-container,
+  .agrinews {
+    width: 100%;
+  }
+  .agrinews:nth-child(2) {
+    width: 100%;
+  }
+}
+
+/* * {
+  border: 1px red solid;
+} */
