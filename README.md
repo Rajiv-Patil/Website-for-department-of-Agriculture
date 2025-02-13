@@ -1,6 +1,6 @@
 # Website-for-department-of-Agriculture
 CS-CBI-C1 <br> Roll no: 1,2,3,4,5,6 
-<h2>Group 1</h2>
+<h2>CS-CBI-C1 Group 1</h2>
 <table>
   <thead>
     <tr>
